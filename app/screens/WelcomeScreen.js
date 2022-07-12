@@ -1,11 +1,11 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, View, Text } from "react-native";
-import AppButton from "../components/AppButton";
+import Button from "../components/Button";
 
 function WelcomeScreen(props) {
   return (
     <ImageBackground
-    blurRadius={8}
+      blurRadius={8}
       style={styles.background}
       source={require("../assets/background.jpeg")}
     >
@@ -14,9 +14,9 @@ function WelcomeScreen(props) {
         <Text style={styles.tagline}>Sell what you don't need!</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <AppButton title="Login" />
+        <Button title="Login" />
 
-        <AppButton title="Register" color="secondary" />
+        <Button title="Register" color="secondary" />
       </View>
     </ImageBackground>
   );
