@@ -1,16 +1,12 @@
-import React, { useEffect } from "react";
-import * as ImagePicker from "expo-image-picker";
-import Screens from "./app/components/Screens";
+import { NavigationContainer } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import { Text } from "react-native";
+import AppNavigator from "./app/navigation/AppNavigator";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
 
 export default function App() {
-  const requestPermission = async () => {
-    const result = await ImagePicker.requestCameraRollPermissionsAsync();
-    if (!result.granted) {
-      alert("You need to enable result to access library");
-    }
-  };
-  useEffect(() => {
-    requestPermission();
-  }, []);
-  return <Screens></Screens>;
+  return <NavigationContainer theme={navigationTheme}>
+    <AppNavigator/>
+  </NavigationContainer>
 }
