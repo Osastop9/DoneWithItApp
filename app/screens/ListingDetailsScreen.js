@@ -4,13 +4,14 @@ import Text from "../components/Text";
 import colors from "../config/colors";
 import ListItem from "../components/lists/ListItem";
 
-export default function ListingDetailsScreen() {
+export default function ListingDetailsScreen({ route }) {
+  const listing = route.params;
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/obi.jpg")} />
+      <Image style={styles.image} source={listing.image} />
       <View style={styles.detailsContainer}>
-        <Text style={styles.title}>Android Phone for sale</Text>
-        <Text style={styles.price}>$100</Text>
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.price}>${listing.price}</Text>
       </View>
       <View style={styles.listItemContainer}>
         <ListItem
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     height: 300,
   },
   listItemContainer: {
-    marginTop: 40
+    marginTop: 40,
   },
   price: {
     color: colors.secondary,

@@ -7,7 +7,7 @@ import ListItemSeperator from "../components/lists/ListItemSeperator";
 import Screens from "../components/Screens";
 import colors from "../config/colors";
 
-const menuItem = [
+const menuItems = [
   {
     title: "My Listings",
     icon: {
@@ -15,59 +15,60 @@ const menuItem = [
       backgroundColor: colors.primary,
     },
   },
-
   {
     title: "My Messages",
     icon: {
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen: "Messages",
   },
 ];
 
-function AccountScreen(props) {
+function AccountScreen({ navigation }) {
   return (
     <Screens style={styles.screen}>
-      <View>
+      <View style={styles.container}>
         <ListItem
-          title={"Isaac Uduehi"}
-          subTitle={"isaacuduehi9@gmail.com"}
+          title="Isaac Uduehi"
+          subTitle="isaacuduehi9@gmail.com"
           image={require("../assets/isaac.jpeg")}
         />
       </View>
       <View style={styles.container}>
         <FlatList
-          data={menuItem}
+          data={menuItems}
           keyExtractor={(menuItem) => menuItem.title}
           ItemSeparatorComponent={ListItemSeperator}
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
-              subTitle={item.subTitle}
-              ImageComponent={
+              IconComponent={
                 <Icons
                   name={item.icon.name}
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />
       </View>
-
       <ListItem
-        title={"Logout"}
-        ImageComponent={<Icons name={"logout"} backgroundColor={"#ffe66d"} />}
+        title="Log Out"
+        IconComponent={<Icons name="logout" backgroundColor="#ffe66d" />}
       />
     </Screens>
   );
 }
+
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: 20,
-  },
   screen: {
     backgroundColor: colors.lightGrey,
   },
+  container: {
+    marginVertical: 20,
+  },
 });
+
 export default AccountScreen;

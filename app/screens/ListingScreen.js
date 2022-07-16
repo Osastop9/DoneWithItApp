@@ -19,7 +19,7 @@ const listings = [
   },
 ];
 
-function ListingScreen(props) {
+function ListingScreen({ navigation }) {
   return (
     <Screens style={styles.screen}>
       <FlatList
@@ -30,6 +30,7 @@ function ListingScreen(props) {
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
+            onPress={() => navigation.navigate("ListingDetails", item)}
           />
         )}
       />
@@ -40,7 +41,7 @@ function ListingScreen(props) {
 const styles = StyleSheet.create({
   screen: {
     padding: 20,
-    backgroundColor: colors.lightGrey
+    backgroundColor: colors.lightGrey,
   },
 });
 
